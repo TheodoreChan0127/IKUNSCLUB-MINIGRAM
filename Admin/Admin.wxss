@@ -1,0 +1,65 @@
+/* pages/Admin/Admin.wxss */
+Page {
+}
+.user{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 50rpx;
+}
+.users{
+  margin-bottom: 100rpx;
+}
+.button_container{
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  bottom: 0rpx;
+  left: 0rpx;
+  width:750rpx;
+}
+.button{
+  margin-top: 20rpx;
+}
+.show_button{
+  position: fixed;
+  bottom: 100rpx;
+  left: 10rpx;
+  width: 100rpx;
+}
+.admin_root{
+  background-color:rgba(90, 167, 255, 0.075) !important;
+}
+
+.InputContainer {
+  padding: 15rpx;
+  margin-left: 40rpx;
+  margin-top: 100rpx;
+  border-radius: 50rpx;
+}
+.Input_Text{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.buttonContainer{
+  position: fixed;
+  bottom: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  border: none;
+}
+.content_input{
+  height: 250rpx !important;
+  width: 100% !important;
+}
+.Tip_Content{
+  height: 150rpx !important;
+  width: 100% !important;
+}
+.UserTip{
+  height: 200rpx;
+  padding:50rpx;
+  padding-top: 100rpx;
+}
+.UserTip_Content{
+  margin-left: 10%;
+}

@@ -1,0 +1,279 @@
+<!--pages/Admin/Admin.wxml-->
+<view class="users">
+  <van-cell-group inset class="user" wx:for="{{userArray}}" wx:key="id">
+    <van-cell custom-class="admin_root" title="ID" value="{{item.id}}" />
+    <van-cell custom-class="admin_root" title="Name" value="{{item.name}}" />
+    <van-cell custom-class="admin_root" title="Email" value="{{item.email}}" />
+    <van-cell custom-class="admin_root" title="Role" value="{{item.role}}" />
+    <van-cell custom-class="admin_root" title="BossID" value="{{item.boss}}" />
+    <van-cell custom-class="admin_root" title="Activation" value="{{item.activation}}" />
+    <view style="display: flex;">
+      <van-button
+    type="primary"
+    size = "large"
+    style="width: 600rpx;"
+    color="rgb(135,206,250,0.5)"
+    data-targetid = "{{item.id}}"
+    bind:click = "checkUserTip"
+    >CheckTip</van-button>
+    <van-button
+    type="primary"
+    size = "large"
+    style="width: 600rpx;"
+    color="rgb(135,206,250,0.5)"
+    data-targetid = "{{item.id}}"
+    bind:click = "deleteUser"
+    >Delete</van-button>
+    </view>
+
+  </van-cell-group>
+</view>
+
+<van-button class="show_button"
+  color="rgba(90, 167, 255, 0.584)"
+  size="large"
+  round
+  bind:click="showAnimation"
+>
+Func
+</van-button>
+
+<van-transition name="fade" show="{{func_bIsShow}}" duration="500">
+  <view class="button_container">
+    <van-button class="button"
+    style="margin-bottom:20rpx;"
+    color="rgba(117, 164, 236, 0.671)"
+    size="small"
+    round
+    bind:click="addUser_Show">
+    添加用户
+    </van-button>
+  
+    <van-button class="button"
+    color="rgba(117, 164, 236, 0.671)"
+    size ="small"
+    round
+    bind:click="changeNotice_Show">
+    修改公告
+    </van-button>
+  
+    <van-button class="button"
+    color="rgba(117, 164, 236, 0.671)"
+    size ="small"
+    round
+    bind:click="changeTip_Show">
+    修改用户须知
+    </van-button>
+  
+    <van-button class="button"
+    color="rgba(117, 164, 236, 0.671)"
+    size ="small"
+    round
+    bind:click="changeUserInfo_Show">
+    更改用户信息
+    </van-button>
+    
+  </view>
+</van-transition>
+
+  <van-popup
+  show="{{addUser_bIsShow || changeNotice_bIsShow || changeTip_bIsShow || changeUserInfo_bIsShow}}"
+  position="bottom"
+  custom-style="height: 55%;"
+  round="true"
+  closeable="true"
+  bind:close="closeInput"
+ >
+    
+<view class = "InputContainer" wx:if="{{addUser_bIsShow}}">
+    <van-cell-group inset="true" border="{{false}}">
+      <text class="Input_Text">Name:</text>
+      <van-field
+        center
+        required
+        border="{{false}}"
+        clearable
+        bind:blur = "OnChange_Name"
+        placeholder="User Name"
+      />
+      <text class="Input_Text">Email:</text>
+      <van-field
+        center
+        required
+        border="{{false}}"
+        clearable
+        bind:blur = "OnChange_Mail"
+        placeholder="User Email"
+      >
+      </van-field>
+      <text class="Input_Text">Role:</text>
+      <van-field
+        center
+        required
+        border="{{false}}"
+        clearable
+        bind:blur = "OnChange_Role"
+        placeholder="User Role"
+      >
+      </van-field>
+    
+      <view class="buttonContainer">
+        <van-button 
+      type="primary"
+      size = "large"
+      style="width: 600rpx;"
+      color="#4169E1"
+      round
+      bind:click = "addUser"
+      >
+        Confirm
+      </van-button>
+      </view>
+      
+    </van-cell-group> 
+  
+</view>
+
+<view class = "InputContainer" wx:if="{{changeNotice_bIsShow}}">
+  <van-cell-group inset="true" border="{{false}}">
+    <text class="Input_Text" style="font-size: 50rpx;">Content:</text>
+    <van-field
+      required="{{true}}"
+      border="{{false}}"
+      type = "textarea"
+      clearable
+      maxlength = "100"
+      show-word-limit="{{true}}"
+      autosize
+      input-class = "content_input"
+      bind:blur = "OnChange_Content"
+      placeholder="Here is Content"
+    />
+    <view class="buttonContainer">
+      <van-button 
+    type="primary"
+    size = "large"
+    style="width: 600rpx;"
+    color="#4169E1"
+    round
+    bind:click = "changeNotice"
+    >
+      Confirm
+    </van-button>
+    </view>
+    
+  </van-cell-group> 
+
+</view>
+
+<view class = "InputContainer" wx:if="{{changeTip_bIsShow}}">
+  <van-cell-group inset="true" border="{{false}}">
+    <text class="Input_Text">ID:</text>
+    <van-field
+      center
+      required
+      border="{{false}}"
+      clearable
+      bind:blur = "OnChange_ID"
+      placeholder="User ID"
+    />
+    <text class="Input_Text">Content:</text>
+    <van-field
+      required="{{true}}"
+      border="{{false}}"
+      type = "textarea"
+      clearable
+      maxlength = "100"
+      show-word-limit="{{true}}"
+      autosize
+      input-class = "Tip_Content"
+      bind:blur = "OnChange_Content"
+      placeholder="Here is Content"
+    />
+  
+    <view class="buttonContainer">
+      <van-button 
+    type="primary"
+    size = "large"
+    style="width: 600rpx;"
+    color="#4169E1"
+    round
+    bind:click = "changeTip"
+    >
+      Confirm
+    </van-button>
+    </view>
+    
+  </van-cell-group> 
+
+</view>
+
+<view class = "InputContainer" style="margin-top: 30rpx;" wx:if="{{changeUserInfo_bIsShow}}">
+  <van-cell-group inset="true" border="{{false}}">
+    <text class="Input_Text">ID:</text>
+    <van-field
+      center
+      required
+      border="{{false}}"
+      clearable
+      bind:blur = "OnChange_ID"
+      placeholder="User ID"
+    />
+    <text class="Input_Text">Name:</text>
+    <van-field
+      center
+      border="{{false}}"
+      clearable
+      bind:blur = "OnChange_Name"
+      placeholder="User Name"
+    />
+    <text class="Input_Text">Role:</text>
+    <van-field
+      center
+      border="{{false}}"
+      clearable
+      bind:blur = "OnChange_Role"
+      placeholder="User Role"
+    >
+    </van-field>
+  
+    <view class="buttonContainer" style="bottom: 15rpx;">
+      <van-button 
+    type="primary"
+    size = "large"
+    style="width: 600rpx;"
+    color="#4169E1"
+    round
+    bind:click = "changeUserInfo"
+    >
+      Confirm
+    </van-button>
+    </view>
+    
+  </van-cell-group> 
+
+</view>
+
+  </van-popup>
+
+  <van-popup
+  show="{{UserTip_bIsShow}}"
+  position="center"
+  custom-style="height: 55%;"
+  custom-style="width: 55%;"
+  round="true"
+  closeable="true"
+  bind:close="checkUserTip_Show"
+  >
+  <view class = "UserTip" >
+    <text class="Input_Text" style="font-size: 50rpx;">Content:
+
+    </text>
+    <text class="UserTip_Content">{{UserTip}}</text>
+  </view>
+  </van-popup>
+
+
+
+
+

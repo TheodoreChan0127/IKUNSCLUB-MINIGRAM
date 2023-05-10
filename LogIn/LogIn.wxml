@@ -1,0 +1,82 @@
+<!--index.wxml-->
+
+
+<view class = "InputContainer">
+<van-cell-group inset="true" border="{{false}}">
+  <text class="Login_Text">Email:</text>
+  <van-field
+    center
+    required
+    border="{{false}}"
+    clearable
+    title-width="4.3em"
+    bind:blur = "OnChange_Mail"
+    placeholder="Mail_Address"
+  />
+  <text class="Login_Text">Captcha:</text>
+  <van-field
+    center
+    required
+    border="{{false}}"
+    clearable
+    title-width="6em"
+    bind:blur = "OnChange_Vfcode"
+    placeholder="Verify"
+    type="number"
+    use-button-slot
+  >
+    <van-button color="#4169E1" slot="button" size="small" type="primary" bind:click="OnClick_Vfcode" round >
+      Send
+    </van-button>
+  </van-field>
+
+  <view class="buttonContainer">
+    <van-button 
+  type="primary"
+  size = "large"
+  style="width: 300rpx;"
+  color="#4169E1"
+  round
+  bind:click = "Auto_LogIn"
+  >
+    Auto LogIn
+  </van-button>
+    <van-button 
+  type="primary"
+  style="width: 300rpx;"
+  size = "large"
+  color="#4169E1"
+  round
+  bind:click = "OnClick_LogIn"
+  >
+    Sign Up
+  </van-button>
+  </view>
+</van-cell-group> 
+
+<view class="BoardContainer">
+  <van-popup
+  show="{{popup_bIsShow}}"
+  position="bottom"
+  custom-style="height: 50%;"
+  round="true"
+  closeable="true"
+  bind:close="popup_close"
+ >
+    <view class="Board">
+      <text class="Board_text">
+        Sign Up:首次打开需要填写邮箱和验证码，进行微信openid绑定，此后只需点击Auto Login便可登陆
+        Auto Login：无需填写邮箱和验证码。
+        每次输入完，在点击按钮前，需使输入框失焦，否则就需要再次点击按钮
+
+        管理员联系方式:
+        QQ: 940468339
+      </text>
+    </view>
+  </van-popup>
+  <van-cell-group inset border="{{false}}">
+  <van-cell border="{{false}}" class="popup_cell" center value="If You Encount Problem?" bind:click="popup_show" />
+  </van-cell-group>
+</view>
+
+</view>

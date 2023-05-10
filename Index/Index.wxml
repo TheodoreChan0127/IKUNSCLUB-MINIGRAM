@@ -1,0 +1,54 @@
+<!--pages/Index/Index.wxml-->
+<view class="Index_Title">
+  <text style="color:#4169E1;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 70rpx; ">
+    i k u n s C L U B
+  </text>
+  <text style="color: #C0C0C0;">Admin: lmg & TheodoreChan</text>
+</view>
+
+<text class="Index_Text">B o a r d</text>
+<view class="noticeContainer">
+  <view class="userTip">
+    <text>{{Tips}}</text>
+  </view>
+  <view class="notice">
+    <text>{{Notice}}</text>
+  </view>
+</view>
+
+<view  class="user">
+  <text class="Index_Text">I n f o</text>
+  <van-cell-group  border="{{false}}" inset >
+    <van-cell custom-class="Info_root"  border="{{false}}" title-class="Info_title" value-class="Info_value" title="ID" value="{{Id}}" />
+    <van-cell custom-class="Info_root"  border="{{false}}" title-class="Info_title" value-class="Info_value"  title="Name" value="{{Name}}" />
+    <van-cell custom-class="Info_root"  border="{{false}}" title-class="Info_title" value-class="Info_value"  title="Email" value="{{Email}}" />
+    <van-cell custom-class="Info_root"  border="{{false}}" title-class="Info_title" value-class="Info_value"  title="Role" value="{{Role}}" />
+    <van-cell custom-class="Info_root"  border="{{false}}" title-class="Info_title" value-class="Info_value"  title="BossID" value="{{Boss}}" />
+    <van-cell custom-class="Info_root"  border="{{false}}" title-class="Info_title" value-class="Info_value"  title="Activation" value="{{Activation}}" />
+  </van-cell-group>
+</view>
+
+<view style="padding-bottom: 50rpx;">
+  <text class="Index_Text">E l e m e n t L i s t</text>
+  <van-cell-group inset  border="{{false}}" class="text_container">
+    <van-cell title="Get New Link"  border="{{false}}" value="Function 1" clickable = true label="Click to Get Link for Clash" bind:click="GetLink"></van-cell>
+    <van-cell title="How to Use NewLink"  border="{{false}}" value="" clickable = true label="Click to Know Clash" is-link bind:click="popup_show" ></van-cell>
+  </van-cell-group>
+  
+  <view class="BoardContainer">
+    <van-popup
+    show="{{popup_bIsShow}}"
+    position="bottom"
+    custom-style="height: 50%;"
+    round="true"
+    closeable="true"
+    bind:close="popup_close"
+   >
+      <view class="Board">
+        <text class="Board_text">由于当前微信关闭了openURL API，故只能由用户自行用浏览器打开Clash for Android的官方网址。
+         URL = “<text user-select="all">https://clashforandroid.org/</text>”
+        </text>
+      </view>
+    </van-popup>
+  </view>
+</view>

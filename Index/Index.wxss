@@ -1,0 +1,77 @@
+/* pages/Index/Index.wxss */
+Page {
+  background-image: url("cloud://theodore-5g6h1krtdd984ab9.7468-theodore-5g6h1krtdd984ab9-1317381174/Login_Background.png	");
+  background-repeat: no-repeat;
+}
+.Index_Title{
+  margin-top: -50rpx;
+  margin-left: 18%;
+  margin-bottom: 50rpx;
+  font-weight: 300;
+  font-family:'Times New Roman', Times, serif;
+}
+.Index_Text{
+  font-size: 35rpx;
+  color: #4169E1;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight:200;
+  margin-left: 50rpx;
+  line-height: 70rpx;
+}
+.noticeContainer{
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20rpx;
+}
+.userTip{
+  background-color: rgba(76, 167, 241, 0.829);
+  color: aliceblue;
+  text-align: center;
+  line-height: 50rpx;
+  width: 300rpx;
+  height:auto;
+  border-radius: 20rpx;
+}
+.userTip text{
+  
+}
+.notice{
+  align-self: center;
+  background-color: rgb(103, 148, 216);
+  text-align: center;
+  color: aliceblue;
+  line-height: 50rpx;
+  width: 300rpx;
+  height: auto;
+  border-radius: 20rpx;
+}
+.notice text{
+  position: relative;
+  top: 25%;
+}
+.Board {
+  height: 550rpx;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  margin: 30rpx;
+  position: relative;
+  top: 40rpx;
+}
+.Board_text{
+  font-size: larger;
+  font-weight:300;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.user{
+    margin-bottom: 30rpx;
+}
+.Info_root{
+  background-color:rgba(154, 185, 231, 0.363) !important;
+}
+.Info_title{
+  color:#1a41b8 !important;
+}
+.Info_value{
+  color: rgb(64, 135, 201) !important;
+}
